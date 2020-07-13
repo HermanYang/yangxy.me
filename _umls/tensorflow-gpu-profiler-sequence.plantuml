@@ -1,5 +1,6 @@
 @startuml Tensorflow GPU Profiler Sequence
 ProfilerSession -> GpuTracer: Create
+'Start'
 ProfilerSession -> GpuTracer: Start
 GpuTracer -> CuptiTracer: Create
 GpuTracer -> CuptiTracerCollectorImpl: Create
@@ -28,6 +29,7 @@ alt enable event-based_activity
 else disable event-based_activity
     CuptiTracer -> CuptiDriverApiHookWithActivityApi: Create
 end
+'Run'
 Cupti -> CuptiTracer: HandleCallback
 alt enable event-based_activity
     alt Api Enter
@@ -48,12 +50,14 @@ else disable event-based_activity
         CuptiTracerCollectorImpl -> PerDeviceCollector: Add event 
     end
 end
+'CollectData'
 ProfilerSession -> GpuTracer: CollectData
 GpuTracer -> CuptiTracerCollectorImpl: Export
 loop for each gpu device
     CuptiTracerCollectorImpl -> PerDeviceCollector: Flush
     PerDeviceCollector -> StepStats: Add device stats
 end 
+'Stop'
 ProfilerSession -> GpuTracer: Stop
 GpuTracer -> CuptiTracer: Disable
 CuptiTracer -> CuptiInterface: Disable Api Tracing
