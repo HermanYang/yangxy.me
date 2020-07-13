@@ -1,4 +1,5 @@
-@startuml Tensorflow GPU Profiler Sequence
+@startuml
+
 ProfilerSession -> GpuTracer: Create
 'Start'
 ProfilerSession -> GpuTracer: Start
@@ -68,4 +69,5 @@ alt enable event-based_activity
 else disable event-based_activity
     CuptiTracer -> CuptiDriverApiHookWithActivityApi: SyncAndFlush
 end
+
 @enduml
