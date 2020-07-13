@@ -1,4 +1,381 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-08T21:15:31+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-06-08T21:11:29+08:00</published><updated>2020-06-08T21:11:29+08:00</updated><id>http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-12T17:13:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Mlperf Inference Paper Reading</title><link href="http://localhost:4000/2020/07/02/mlperf-inference-paper-reading.html" rel="alternate" type="text/html" title="Mlperf Inference Paper Reading" /><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><id>http://localhost:4000/2020/07/02/mlperf-inference-paper-reading</id><content type="html" xml:base="http://localhost:4000/2020/07/02/mlperf-inference-paper-reading.html">&lt;h1 id=&quot;mlperf-inference-paper-reading&quot;&gt;MLPerf Inference Paper Reading&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-mlperf-supporting-organizations&quot;&gt;1. MLPerf Supporting Organizations&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;28 Companies
+    &lt;ul&gt;
+      &lt;li&gt;Alibaba&lt;/li&gt;
+      &lt;li&gt;AMD&lt;/li&gt;
+      &lt;li&gt;ARM&lt;/li&gt;
+      &lt;li&gt;Baidu&lt;/li&gt;
+      &lt;li&gt;Google&lt;/li&gt;
+      &lt;li&gt;Huawei&lt;/li&gt;
+      &lt;li&gt;Intel&lt;/li&gt;
+      &lt;li&gt;NVDIA&lt;/li&gt;
+      &lt;li&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;500+ discuusion group members&lt;/li&gt;
+  &lt;li&gt;7 Research Instituions
+    &lt;ul&gt;
+      &lt;li&gt;Harvard University&lt;/li&gt;
+      &lt;li&gt;Stanford University&lt;/li&gt;
+      &lt;li&gt;University of California, berkerly&lt;/li&gt;
+      &lt;li&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;2-deep-learning-benchmark-challeges&quot;&gt;2. Deep Learning Benchmark Challeges&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Diversity of models
+    &lt;ul&gt;
+      &lt;li&gt;Model name fail to uniquely describe a model&lt;/li&gt;
+      &lt;li&gt;Community support, open source&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Deployment-Senario Diversity&lt;/li&gt;
+  &lt;li&gt;Inference-System Diversity&lt;/li&gt;
+  &lt;li&gt;Something addtions
+    &lt;ul&gt;
+      &lt;li&gt;require industry-wide input&lt;/li&gt;
+      &lt;li&gt;using latency other than MACs&lt;/li&gt;
+      &lt;li&gt;accuracy is crucial&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;3-contributions&quot;&gt;3. Contributions&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Models Chosen&lt;/li&gt;
+  &lt;li&gt;Identify Deep Learning realistic senarios&lt;/li&gt;
+  &lt;li&gt;Defines Metrics&lt;/li&gt;
+  &lt;li&gt;Defines allows and prohibited techniques, benchmarking rules&lt;/li&gt;
+  &lt;li&gt;Extendable&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;4-mlperf-inferenc-benchmark-design&quot;&gt;4. MLPerf Inferenc Benchmark Design&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Models and datasets chosen&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;lightweigh and heavyweight&lt;/li&gt;
+      &lt;li&gt;Vision and Language&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Defines quanlity targets&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;per-model quanlity targets&lt;/li&gt;
+      &lt;li&gt;within 1% FP32 reference model’s accuracy&lt;/li&gt;
+      &lt;li&gt;no-retrainning&lt;/li&gt;
+      &lt;li&gt;mobilenet within 2% FP32 reference accuary, 22.0 mAP&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Realistic End-User Scenarios&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Single-stream&lt;/li&gt;
+      &lt;li&gt;Multistream&lt;/li&gt;
+      &lt;li&gt;Server&lt;/li&gt;
+      &lt;li&gt;Offline&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Statistically Confident Tail-Latency Bounds&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Sample size defined by tail-latency percentage, confidence and margin&lt;/li&gt;
+      &lt;li&gt;run at least 60 seconds for dynamic voltage and freqency scaling(DVFS) consideration&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;5-comparasion&quot;&gt;5. Comparasion&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AI Benchmark&lt;/strong&gt;
+Only foncus on Android smartphones and only measure latency&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;EEMBC MLMark&lt;/strong&gt;
+Only measure performance and accuracy of embedded inference devices, fixed best batch size&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fathom&lt;/strong&gt;
+Focus on throughput rather than accuracy&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AI Matrix&lt;/strong&gt;
+Alibaba’s Standard, focus on basic operation like convolution and matrix multiplication&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DeepBench&lt;/strong&gt;
+fail to addess the complexity of full models&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TBD(Training Benchmarks for DNNs)&lt;/strong&gt;
+Focus on ML training, focus on GPU only&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DAWNBench&lt;/strong&gt;
+Inspire MLPerf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;6-mlperf-inference-summary&quot;&gt;6. &lt;a href=&quot;https://mlperf.org/inference-overview&quot;&gt;MLPerf Inference Summary&lt;/a&gt;&lt;/h2&gt;</content><author><name></name></author><summary type="html">MLPerf Inference Paper Reading</summary></entry><entry><title type="html">Nvdia Profilers</title><link href="http://localhost:4000/2020/06/30/nvdia-profilers.html" rel="alternate" type="text/html" title="Nvdia Profilers" /><published>2020-06-30T00:00:00+08:00</published><updated>2020-06-30T00:00:00+08:00</updated><id>http://localhost:4000/2020/06/30/nvdia-profilers</id><content type="html" xml:base="http://localhost:4000/2020/06/30/nvdia-profilers.html">&lt;h1 id=&quot;nvdia-profiler-introduction&quot;&gt;NVDIA Profiler Introduction&lt;/h1&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.nvidia.com/cuda/profiler-users-guide/#nvprof-overview&quot;&gt;Visual Profiler, aks nvvp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.nvidia.com/cuda/profiler-users-guide/#nvprof-overview&quot;&gt;nvprof&lt;/a&gt;
+The easiest profiler to use is nvprof, a command-line light-weight profiler which presents an overview of the GPU kernels and memory copies in your application. You can use nvprof as below:&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvprof python run_inference.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Nsight Systems/Nsight Compute
+&lt;a href=&quot;https://docs.nvidia.com/cuda/profiler-users-guide/#migrating-to-nsight-tools&quot;&gt;Nsight VS Visual Profiler and nvprof&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.nvidia.com/cuda/profiler-users-guide/#nvtx&quot;&gt;NVIDIA Tools Extension, aks nvtx&lt;/a&gt;
+TensorFlow inside the NVIDIA container is built with NVTX ranges for TensorFlow operators. This means every operator (including TRTEngineOp) executed by TensorFlow will appear as a range on the visual profiler which can be linked against the CUDA kernels executed by that operator. This way, you can check the kernels executed by TensorRT, the timing of each, and compare that information with the profile of the original TensorFlow graph before conversion.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html&quot;&gt;DLProf&lt;/a&gt;
+&lt;strong&gt;DLProf is a wrapper tool around Nsight Systems&lt;/strong&gt; that correlates profile timing data and kernel information to a Machine Learning model. The correlated data is presented to a Data Scientist in a format that can be easily digested and understood by the Data Scientist. The results highlight GPU utilization of model and DL/ML operations. The tools provide different reports to aid in identifying bottlenecks and Tensor Core usage.&lt;/li&gt;
+  &lt;li&gt;Tensorflow Profiler&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;some-articles&quot;&gt;Some Articles&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.nvidia.com/deeplearning/frameworks/tf-trt-user-guide/#profiling-tools&quot;&gt;TensorRT Profilers Introduction&lt;/a&gt;
+Introduces NVIDIA profiler tools to profile TensorRT programs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/tensorflow/high-performance-inference-with-tensorrt-integration-c4d78795fbfe&quot;&gt;High Performance inference with TensorRT Integration&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;tensorrt conversion&lt;/li&gt;
+  &lt;li&gt;quantization and calibiration&lt;/li&gt;
+  &lt;li&gt;use nvprof to measure performance&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;personal-throught&quot;&gt;Personal Throught&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Nsight System ~ nvprof &amp;amp; nvvp(Virtual Profiler)&lt;/li&gt;
+  &lt;li&gt;DLProf = Nsight + NVTX + Tensorboard Plugin&lt;/li&gt;
+  &lt;li&gt;DLProf Disadvantage:
+    &lt;ol&gt;
+      &lt;li&gt;Missing Application Layer profile data&lt;/li&gt;
+      &lt;li&gt;Missing Framework Layer Profile data&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;profiler-components&quot;&gt;Profiler Components&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;@startuml
+[Profiler] as profiler
+[Python Model] as model
+[Tensorflow Profiler] as tf_profiler
+[CNPAPI] as cnpapi
+
+model --&amp;gt; profiler
+profiler --&amp;gt; tf_profiler
+profiler --&amp;gt; cnpapi
+
+@enduml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;profiler-sequences&quot;&gt;Profiler Sequences&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;@startuml
+
+Model --&amp;gt; Profiler: Preprocess
+Model --&amp;gt; &quot;Tensorflow/OpenCV/etc.&quot;: Preprocess
+Model --&amp;gt; Profiler: Preprocess End
+Profiler --&amp;gt; Profiler: Record
+Model --&amp;gt; Profiler: Session Run
+Profiler --&amp;gt; &quot;Tensorflow Profiler&quot;: Collect RunMetaData
+&quot;Tensorflow Profiler&quot; --&amp;gt; Profiler: Op Stats
+Profiler --&amp;gt; &quot;CNPAPI&quot;: Collect Runtime Stats
+&quot;CNPAPI&quot; --&amp;gt; Profiler: Runtime Stats
+Profiler --&amp;gt; &quot;CNPAPI&quot;: Collect Hardward Stats
+&quot;CNPAPI&quot; --&amp;gt; Profiler: Hardward Stats
+Model --&amp;gt; Profiler: Step End
+Model --&amp;gt; Profiler: Postprocess
+Model --&amp;gt; &quot;Tensorflow/OpenCV/etc.&quot;: Postprocess
+Profiler --&amp;gt; Profiler: Record
+Model --&amp;gt; Profiler: Postprocess End
+Model --&amp;gt; Profiler: Finalize
+Profiler --&amp;gt; Profiler: Generate Stats
+Profiler --&amp;gt; Profiler: Generate Timelines
+Profiler --&amp;gt; Profiler: Generate Summary
+
+@enduml
+&lt;/code&gt;&lt;/pre&gt;</content><author><name></name></author><summary type="html">NVDIA Profiler Introduction</summary></entry><entry><title type="html">Mlperf Introduction</title><link href="http://localhost:4000/2020/06/29/mlperf-introduction.html" rel="alternate" type="text/html" title="Mlperf Introduction" /><published>2020-06-29T00:00:00+08:00</published><updated>2020-06-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/06/29/mlperf-introduction</id><content type="html" xml:base="http://localhost:4000/2020/06/29/mlperf-introduction.html">&lt;h1 id=&quot;mlperf-introduction&quot;&gt;MLPerf Introduction&lt;/h1&gt;
+
+&lt;h2 id=&quot;背景&quot;&gt;背景：&lt;/h2&gt;
+&lt;p&gt;深度学习浪潮以降，对机器学习对算法需求越来越旺盛，新算法层出不穷，为此设计的各种优化方式如硬件优化，以及支持的软件库和各类深度学习框架如雨后春笋出现。寻找经典的代表算法，以体系结构中立的方式，可复现的来描述一个集合软硬件优化的推理系统将个巨大挑战。MLPerf Inference就是为解决推理系统性能比较而生，由30多个世界知名人工智能公司联合设计的一套规则，这套规则用于确保在不同体系结构上的推理性能的可比性。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;模型的选择，不同模型针对不同场景，有的对时延敏感，对能耗敏感，有的对精度敏感，因此不同模型的衡量意义不同，&lt;/li&gt;
+  &lt;li&gt;场景多样性&lt;/li&gt;
+  &lt;li&gt;推理系统多样性&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;1. 选择了经典的有代表性的算法，确保了算法的可用性和可复现性
+模型算法使用名字难以唯一确定，比如ResNet-50，不足以描述一个确切的模型，因此各个厂商所谓ResNet-50的性能不具备可比性，MLPerf选定了一系列模型，这些模型是开源的，方便获取的，使用相同模型进行性能对比；&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;总结了实际的应用场景&lt;/li&gt;
+  &lt;li&gt;为不同场景设计了不同性能描述指标&lt;/li&gt;
+  &lt;li&gt;定义了足够宽松的规则来展现软件和硬件的性能&lt;/li&gt;
+  &lt;li&gt;设计的性能描述方式可以允许模型快速演进，新模型可以很容易引入MLPerf而具有以上的性能描述&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;, lowering their tail latency
+is important because: (1) completing them faster frees up
+capacity for other jobs to run; (2) lower tail latency improves performance predictability and user satisfaction;
+and (3) batch jobs may be rendered useless if they take
+excessively long.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://scholar.harvard.edu/files/mlperf_talk_for_sarc.pdf&quot;&gt;MLPerf PPT&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">MLPerf Introduction</summary></entry><entry><title type="html">Profiler How To Use</title><link href="http://localhost:4000/2020/06/18/profiler-how-to-use.html" rel="alternate" type="text/html" title="Profiler How To Use" /><published>2020-06-18T00:00:00+08:00</published><updated>2020-06-18T00:00:00+08:00</updated><id>http://localhost:4000/2020/06/18/profiler-how-to-use</id><content type="html" xml:base="http://localhost:4000/2020/06/18/profiler-how-to-use.html">&lt;h1 id=&quot;tensorflow-models-profiler&quot;&gt;Tensorflow Models Profiler&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-背景&quot;&gt;1. 背景&lt;/h2&gt;
+
+&lt;p&gt;目前推理和训练均有性能统计的需求，性能统计会占用大量人力时间，如果将性能统计功能加入各个模型当中，就能达到快速生成性能统计数据的目的。
+为了可以快速和正确地采集性能数据，需要有标准的性能数据采集步骤，集成了这些步骤后，模型需要可方便地关闭性能采集以免影响性能，同时性能采集的代码要尽可能简洁。
+为此，封装了性能采集接口，帮助工程师编写模型性能采集功能。&lt;/p&gt;
+
+&lt;h2 id=&quot;2-性能数据分层&quot;&gt;2. 性能数据分层&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;应用层：采集模型的数据准备时间，数据后处理时间，程序整体时间等应用层的数据；&lt;/li&gt;
+  &lt;li&gt;框架层：采集模型算子的性能数据，包括计算时间，消耗内存等；&lt;/li&gt;
+  &lt;li&gt;运行时层：采集CNRT，CNML，CNNL以及驱动层等运行时的时间消耗；&lt;/li&gt;
+  &lt;li&gt;硬件层：采集硬件计算时间，硬件利用率，硬件IO状况数据；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;目前，可以采集到的有应用层，框架层以及部分运行时层的性能数据，硬件层的数据目前仍然无法采集到，需要魔改TF来集成系统工具组的接口。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-使用方法&quot;&gt;3. 使用方法&lt;/h2&gt;
+
+&lt;p&gt;1.初始化
+Prifler是一个全局单例，在使用前初始化即可；&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cambricon_example.utils.profiler&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Profiler&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;运行模型前通过控制环境变量打开或者关闭Profile功能&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TENSORFLOW_MODELS_TRACE_LEVEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2 &lt;span class=&quot;c&quot;&gt;# 打开Profile功能&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TENSORFLOW_MODELS_TRACE_LEVEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 &lt;span class=&quot;c&quot;&gt;# 关闭Profile功能&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2.采集应用层数据&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;activity_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;activity_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;doSomeActivity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;activity_end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;activity_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;3.采集框架层数据
+目前只考虑了两种模型运行方式，一种是Keras运行方式，另一种是普通的Session Run方法。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Keras
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RunOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trace_level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_tf_trace_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_metadata&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_tf_runmetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callbacks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_collect_runmetadata_callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Session Run
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RunOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trace_level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_tf_trace_level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_metadata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_tf_runmetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4.生成性能报告&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;profiler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;4-性能报告&quot;&gt;4. 性能报告&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;生成的目录&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;生成Timeline数据与timeline文件夹，可以查看每个step的timeline数据，数据总结在summary.md文件和summary.json文件里面。&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;profile/
+  timeline/
+    model_step_0
+    model_step_1
+    ...
+  step_stats/
+    model_step_0
+    model_step_1
+    ...
+  summary.json
+  summary.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;summary.json内容&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;app_stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[step]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[activity_name]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;meta&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;This is Vgg session run&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;op_stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[model]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[step]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[ip]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[device]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[node name]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;[slot]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;shape&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Int32&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;total_bytes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;vgg16 summary.json 例子&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;app_stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Vgg Session Run&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;meta&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;This is Vgg session run&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;op_stats&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;vgg16&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;CPU&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;op_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;shape&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Int32&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;total_bytes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Tensorflow Models Profiler</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-06-08T21:11:29+08:00</published><updated>2020-06-08T21:11:29+08:00</updated><id>http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 
@@ -8,10 +385,422 @@
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;@startuml
+participant User
+User -&amp;gt; A: DoWork
+activate A
+A -&amp;gt; B: &amp;lt;&amp;lt; createRequest &amp;gt;&amp;gt;
+activate B
+B -&amp;gt; C: DoWork
+activate C
+C --&amp;gt; B: WorkDone
+destroy C
+B --&amp;gt; A: RequestCreated
+deactivate B
+A -&amp;gt; User: Done
+deactivate A
+@enduml
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Tensorflow Profiler</title><link href="http://localhost:4000/tensorflow/2020/06/08/tensorflow-profiler.html" rel="alternate" type="text/html" title="Tensorflow Profiler" /><published>2020-06-08T21:11:29+08:00</published><updated>2020-06-08T21:11:29+08:00</updated><id>http://localhost:4000/tensorflow/2020/06/08/tensorflow-profiler</id><content type="html" xml:base="http://localhost:4000/tensorflow/2020/06/08/tensorflow-profiler.html">&lt;h2 id=&quot;class-hierachy&quot;&gt;Class Hierachy&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Event Collector&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;enum EventCategory {
+  ShceduleClosure
+  RunClosure
+  Compute
+}
+
+class EventCollector {
+  + isEnabled()
+  + RecordEvent()
+  + SetCurrentThreadName()
+  + StartRegin()
+  + StopRegion()
+}
+
+class ScopeRegion {
+  + ScopeRegion()
+  + ~ScopeRegion()
+}
+
+ScopeRegion o-- EventCollector
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;GPU Device Tracerr&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;class DeviceInfo {
+  int ordinal
+  string name
+  int num_contexts
+}
+
+class ContextInfo {
+  int index
+  DeviceInfo dev_info
+  int num_streams
+  CUevent end_event
+}
+
+class StreamInfo {
+  string name
+  int index
+  Contextinfo ctx_info
+}
+
+class CudaEventCollector {
+  + AddStreamInfo(context, stream, name)
+  + Collect()
+  + CudaEventCollector
+  + GetContextInfo
+  + GetElapsedTimeUs
+  + GetMemcpyName
+  + InitializedDeviceInfos()
+  + SaveRecord(record)
+  + SaveStats()
+  + Synchronize()
+}
+
+class CudaEventRecorder {
+    ConsumeKernelRecords()
+    ConsumeMemcpyRecords()
+    StartKernel()
+    StartMemcpy()
+    StopKernel()
+    StopMemcpy()
+}
+
+class CuptiCallbackHook {
+  CuptiCallback()
+  CuptiCallbackHook()
+  DriverApiEnterCallback
+  DriverApiExitCallback
+  Enable
+  GetMemoryType
+  StartMemcpy
+  StartMemcpyAsync
+}
+
+class StepStatsCollector
+class ProfilerInterface
+class DeviceTracer {
+  + Start()
+  + Stop()
+  + CollectData(RunMetadata)
+}
+
+ProfilerInterface &amp;lt;|-- DeviceTracer 
+
+StreamInfo o-- ContextInfo
+ContextInfo o-- DeviceInfo
+CudaEventCollector o-- StreamInfo
+CudaEventCollector o-- CudaEventRecorder 
+CudaEventCollector o-- StepStatsCollector
+DeviceTracer o-- CuptiCallbackHook
+DeviceTracer o-- CudaEventCollector
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;MLU Device Tracer&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;class MallocDetails {
+  uint64 num_bytes
+}
+
+class MemcpyDetails {
+    size num_bytes
+    Dir direction
+    bool async
+}
+
+class MemcpyPeerDetails {
+  size num_bytes
+  int src_device
+  int dst_device
+}
+
+enum CnpapiTracerEventType {
+  Unsupported
+  kernel
+  memcpyPeer
+  MemoryAlloc
+  Generic
+}
+
+enum CnpapiTracerEventSource {
+  Callback
+  Activity
+  Notifier
+}
+
+class KernelDetails{
+  string kernel_name
+}
+
+class CnpapiTracerEvent {
+  CnpapiTracerEventType type
+  CnpapiTracerEventSource source
+  string name
+  uint64 start_time_ns
+  uint64 end_time_ns
+  uint64 schedule_time_ns
+  uint32 device_id
+  uint32 thread_id
+  string anotation
+  KernelDetails kernel_details
+  MemcpyDetails memcpy_details
+  MemcpyPeerDetail memcpy_peer_details
+  MallocDetails malloc_details
+}
+
+class CnpapiTracerOptions {
+  bool enable_activity_api
+  bool enable_event_based_activity
+  bool required_callback_api_events
+  vector cnml_cbids_selected
+  vector cnrt_cbids_selected
+  vector activities_selected
+  bool cnpapi_finalize
+}
+
+class CnpapiInterface {
+
+}
+
+class CnpapiLoader {
+
+}
+
+class CnpapiWrapper {
+  CnpapiLoader cnpapi_loder
+}
+
+class CnpapiTracer {
+  CnpapiSopaApiHook cnpapi_sopa_api_hook_
+  cnpapi_SubscriberHandler subscripber_
+  CnpapiInterface cnpapi_interface_
+  CnpapiTracerCollector collector_
+}
+
+interface ProfilerInterface {
+  +Start()
+  +Stop()
+  +CollectData(RunMetadata* )
+}
+
+class MLUTracer {
+  CnpapiTracer cnpapi_tracer
+  CnpapiTracerOptions options
+  CnpapiTracerCollectorImpl cnpapi_collector
+}
+
+interface CnpapiTracerCollector {
+  +void AddEvent(CnpapiTracerEvent&amp;amp;&amp;amp;)
+  +void onEventsDropped(string reason, uint32 num_events)
+  +void Flush()
+  +AnootationMap* annotation_map()
+  +uint32 GetDeviceId(Dev dev)
+}
+
+class CnpapiTracerCollectorImpl {
+
+}
+
+class CnpapiSopaApiHookWithDeviceEvent {
+  collector_
+  options_
+  sopa_vent_recorder_
+  Fulsh()
+  OnSopaApiEnter()
+  OnSopaApiExit()
+}
+
+class CnpapiSopaApiHookWithHostEvent {
+  collector_
+  options_
+  sopa_vent_recorder_
+  Fulsh()
+  OnSopaApiEnter()
+  OnSopaApiExit()
+}
+
+class CssnpapiApiTracingDisabler {
+
+}
+
+class SopaEventRecorder{
+  CreateAndPlaceNotifier(MLUCnrtNotifier **, MLUCnrtQueue *)
+  Flush()
+  RecordEvent(const EventRecord &amp;amp;)
+  SaveRecord(const EventRecord &amp;amp;)
+}
+
+class EventRecord {
+  CnpapiTracerEventType type
+  string name
+  uint64 start_timestamp
+  MLUCnrtQueue* queue
+  MLUCnrtNotifier* start_notifier
+  MLUCnrtNotifier* end_notifier
+  uint32 device_id
+  uint32 thread_id
+  string anotation
+  KernelDetails kernel_details
+  MemcpyDetails memcpy_details
+}
+
+class QueueInfo {
+   uint64 end_walltime_us
+   bool synchronized 
+   MLUCnrtNotifier end_notifier
+}
+
+class AnnotationStack {
+  +static PushAnnotation(name)
+  +static PopAnnotation(name)
+  static* 
+}
+
+CnpapiTracer o-- CnpapiTracerCollector
+CnpapiTracer o-- CnpapiInterface
+CnpapiTracerEvent o-- CnpapiTracerEventType
+CnpapiTracerEvent o-- CnpapiTracerEventSource
+CnpapiTracerEvent o-- KernelDetails
+CnpapiTracerEvent o-- MemcpyDetails
+CnpapiTracerEvent o-- MemcpyPeerDetails
+CnpapiTracerEvent o-- MallocDetails
+CnpapiInterface &amp;lt;|-- CnpapiWrapper 
+CnpapiWrapper o-- CnpapiLoader
+MLUTracer o-- CnpapiTracer
+MLUTracer o-- CnpapiTracerOptions
+MLUTracer o-- CnpapiTracerCollectorImpl
+ProfilerInterface &amp;lt;|-- MLUTracer 
+CnpapiTracerCollector &amp;lt;|-- CnpapiTracerCollectorImpl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;tensorflow-profiing-sequences&quot;&gt;Tensorflow Profiing Sequences&lt;/h2&gt;
+&lt;h3 id=&quot;local-session&quot;&gt;Local Session&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1. Overall&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;@startuml
+&quot;DirectSession::RunInternal&quot; -&amp;gt; ProfilerSession: Create
+ProfilerSession -&amp;gt; HostTracer: Create
+ProfilerSession -&amp;gt; DeviceTracer: Create
+ProfilerSession -&amp;gt; HostTracer: Start
+ProfilerSession -&amp;gt; DeviceTracer: Start
+&quot;DirectSession::RunInternal&quot; -&amp;gt; StepStatsCollector: new
+&quot;DirectSession::RunInternal&quot; -&amp;gt; ProfilerSession: CollectData
+loop 
+&quot;DirectSession::RunInternal&quot; -&amp;gt; ExecutorState: Process
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetExecutorStarted
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetScheduled
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetComputeStarted
+&quot;ExecutorState&quot; -&amp;gt; Device: Compute
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetComputeEnded
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetMemory
+&quot;ExecutorState&quot; -&amp;gt; NodeExecStats: SetexecutorEnded
+end
+&quot;DirectSession::RunInternal&quot; -&amp;gt; StepStatsCollector: Finalize
+StepStatsCollector -&amp;gt; NodeExecStats: Finalize
+&quot;DirectSession::RunInternal&quot; -&amp;gt; ProfilerSession: Destruction
+ProfilerSession -&amp;gt; Profiler: Stop
+@enduml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;2. Memory Profiling&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;enum AllocRecord {
+  int alloc_bytes
+  int alloc_micros
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;ExecutorState -&amp;gt; Device: Compute
+Device -&amp;gt; OpKernel: Compute
+OpKernel -&amp;gt; TrackingAllocator: Create
+Device -&amp;gt; TrackingAllocator: AllocateRaw
+TrackingAllocator -&amp;gt; TrackingAllocator: AddAllocateRecord
+Device -&amp;gt; TrackingAllocator: DeallocateRaw
+TrackingAllocator -&amp;gt; TrackingAllocator: AddAllocateRecord
+ExecutorState -&amp;gt; NodeExecStats: SetMemory
+NodeExecStats -&amp;gt; OpKernel: ConsumeWrappedAllocators
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Activity/ScropedRegion/Annotation&lt;/strong&gt;
+For Compute, Run Closure events&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;ScopeRegion -&amp;gt; EventCollector:StartRegion
+ScopeRegion -&amp;gt; EventCollector:StopRegion
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Any General Code sn&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;TraceMe -&amp;gt; TraceMeRecorder:Record
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;ScopedAnnotation -&amp;gt; Annotation:PushAnnotation
+ScopedAnnotation -&amp;gt; Annotation:PopAnnotation
+Annotation -&amp;gt; &quot;Thread Local&quot;:ThreadAnnotation
+XXX -&amp;gt; Annotation:CurrentAnnotation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;3. GPU Profiler&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;LaunchKernel,
+Memcpy
+MemcpyAsync
+MemcpyHtoD
+MemcpyHtoDAsync
+MemcpyDtoH
+MemcpyDtoHAsync
+MemcpyDtoD
+MemcpyDtoDAsync&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;ProfileSession -&amp;gt; DeviceTracer: Start
+DeviceTracer -&amp;gt; ScoptedAnnotation: Enbale
+DeviceTracer -&amp;gt; CuptiCallbackHook: new
+CuptiCallbackHook -&amp;gt; CUPTI: cputiSubscribe
+CuptiCallbackHook -&amp;gt; CUPTI: cputiEnbaleCallback
+CUPTI -&amp;gt; CuptiCallbackHook: CuptiCallback
+CuptiCallbackHook -&amp;gt; CuptiCallbackHook: DriverApiEnterCallback
+CuptiCallbackHook -&amp;gt; CudaEventRecorder: StartKernel/StartMemcpy/StopKernel/StopMemcpy
+CudaEventRecorder -&amp;gt; Annotation: CurrentAnnocation
+ProfileSession -&amp;gt; DeviceTracer: CollectData
+DeviceTracer -&amp;gt; CudaEventCollector: Collect
+CudaEventCollector -&amp;gt; CudaEventRecorder: ConsumeKernelRecords
+CudaEventCollector -&amp;gt; CudaEventRecorder: ConsumeMemcpyRecords
+CudaEventCollector -&amp;gt; StepStatsCollector: Save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;4. MLU Profiler&lt;/strong&gt;
+cnmlCompileBaseOp
+cnmlCompileFusionOp
+cnrtInvokeKernel
+cnrtInvokeRuntimeContext
+cnrtDestroyQueue
+cnrtSyncQueue
+cnrtMemcpy
+cnrtMemcpyPeer
+cnrtMalloc
+cnrtMemcpyAsync&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-puml&quot;&gt;ProfileSession -&amp;gt; MLUTracer: Create
+MLUTracer -&amp;gt; CnpapiInterface: Create
+ProfileSession -&amp;gt; MLUTracer: Start
+MLUTracer -&amp;gt; CnpapiTracerCollector: new
+MLUTracer -&amp;gt; AnnotationStack: Enable
+MLUTracer -&amp;gt; CnpapiTracer: Enable
+CnpapiTracer -&amp;gt; CnpapiCnApiHookWithDeviceEvent:new
+CnpapiTracer -&amp;gt; CnpapiCnApiHookWithHostEvent:new
+CnpapiTracer -&amp;gt; CnpapiInterface: Subscribe
+CnpapiInterface -&amp;gt; Papi: subscribe
+Papi -&amp;gt; CnpapiTracer: HandleCallback
+CnpapiTracer -&amp;gt; CnEventRecorder: StarttKernelEvent/StopEvent
+CnEventRecorder -&amp;gt; CnEventRecorder: Record Event
+ProfileSession -&amp;gt; MLUTracer: CollectData
+MLUTracer -&amp;gt; CnpapiTracerCollector: CollectData
+
+
+ProfileSession -&amp;gt; MLUTracer: Stop
+MLUTracer -&amp;gt; AnnotationStack: Disable
+MLUTracer -&amp;gt; CnpapiTracer: Disable
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;remote-session&quot;&gt;Remote Session&lt;/h3&gt;</content><author><name></name></author><summary type="html">Class Hierachy Event Collector ```puml enum EventCategory { ShceduleClosure RunClosure Compute }</summary></entry></feed>

@@ -15,7 +15,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-08T21:11:29+08:00" />
 <script type="application/ld+json">
-{"datePublished":"2020-06-08T21:11:29+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html"},"description":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.","@type":"BlogPosting","url":"http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html","headline":"Welcome to Jekyll!","dateModified":"2020-06-08T21:11:29+08:00","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Welcome to Jekyll!","dateModified":"2020-06-08T21:11:29+08:00","datePublished":"2020-06-08T21:11:29+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html"},"description":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.","url":"http://localhost:4000/jekyll/update/2020/06/08/welcome-to-jekyll.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
 <body><header class="site-header" role="banner">
@@ -54,6 +54,23 @@
 <p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
 
 <p>Jekyll also offers powerful support for code snippets:</p>
+
+<pre><code class="language-puml">@startuml
+participant User
+User -&gt; A: DoWork
+activate A
+A -&gt; B: &lt;&lt; createRequest &gt;&gt;
+activate B
+B -&gt; C: DoWork
+activate C
+C --&gt; B: WorkDone
+destroy C
+B --&gt; A: RequestCreated
+deactivate B
+A -&gt; User: Done
+deactivate A
+@enduml
+</code></pre>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
   <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>

@@ -1,0 +1,71 @@
+@startuml Tensorflow GPU Profiler
+class DeviceInfo {
+  int ordinal
+  string name
+  int num_contexts
+}
+
+class ContextInfo {
+  int index
+  DeviceInfo dev_info
+  int num_streams
+  CUevent end_event
+}
+
+class StreamInfo {
+  string name
+  int index
+  Contextinfo ctx_info
+}
+
+class CudaEventCollector {
+  + AddStreamInfo(context, stream, name)
+  + Collect()
+  + CudaEventCollector
+  + GetContextInfo
+  + GetElapsedTimeUs
+  + GetMemcpyName
+  + InitializedDeviceInfos()
+  + SaveRecord(record)
+  + SaveStats()
+  + Synchronize()
+}
+
+class CudaEventRecorder {
+    ConsumeKernelRecords()
+    ConsumeMemcpyRecords()
+    StartKernel()
+    StartMemcpy()
+    StopKernel()
+    StopMemcpy()
+}
+
+class CuptiCallbackHook {
+  CuptiCallback()
+  CuptiCallbackHook()
+  DriverApiEnterCallback
+  DriverApiExitCallback
+  Enable
+  GetMemoryType
+  StartMemcpy
+  StartMemcpyAsync
+}
+
+class StepStatsCollector
+class ProfilerInterface
+class DeviceTracer {
+  + Start()
+  + Stop()
+  + CollectData(RunMetadata)
+}
+
+ProfilerInterface <|-- DeviceTracer 
+
+StreamInfo o-- ContextInfo
+ContextInfo o-- DeviceInfo
+CudaEventCollector o-- StreamInfo
+CudaEventCollector o-- CudaEventRecorder 
+CudaEventCollector o-- StepStatsCollector
+DeviceTracer o-- CuptiCallbackHook
+DeviceTracer o-- CudaEventCollector
+@enduml

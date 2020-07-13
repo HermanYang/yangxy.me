@@ -1,0 +1,81 @@
+<h1 id="nvdia-profiler-introduction">NVDIA Profiler Introduction</h1>
+
+<h2 id="overview">Overview</h2>
+<ol>
+  <li><a href="https://docs.nvidia.com/cuda/profiler-users-guide/#nvprof-overview">Visual Profiler, aks nvvp</a></li>
+  <li><a href="https://docs.nvidia.com/cuda/profiler-users-guide/#nvprof-overview">nvprof</a>
+The easiest profiler to use is nvprof, a command-line light-weight profiler which presents an overview of the GPU kernels and memory copies in your application. You can use nvprof as below:<code class="language-plaintext highlighter-rouge">nvprof python run_inference.py</code></li>
+  <li>Nsight Systems/Nsight Compute
+<a href="https://docs.nvidia.com/cuda/profiler-users-guide/#migrating-to-nsight-tools">Nsight VS Visual Profiler and nvprof</a></li>
+  <li><a href="https://docs.nvidia.com/cuda/profiler-users-guide/#nvtx">NVIDIA Tools Extension, aks nvtx</a>
+TensorFlow inside the NVIDIA container is built with NVTX ranges for TensorFlow operators. This means every operator (including TRTEngineOp) executed by TensorFlow will appear as a range on the visual profiler which can be linked against the CUDA kernels executed by that operator. This way, you can check the kernels executed by TensorRT, the timing of each, and compare that information with the profile of the original TensorFlow graph before conversion.</li>
+  <li><a href="https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html">DLProf</a>
+<strong>DLProf is a wrapper tool around Nsight Systems</strong> that correlates profile timing data and kernel information to a Machine Learning model. The correlated data is presented to a Data Scientist in a format that can be easily digested and understood by the Data Scientist. The results highlight GPU utilization of model and DL/ML operations. The tools provide different reports to aid in identifying bottlenecks and Tensor Core usage.</li>
+  <li>Tensorflow Profiler</li>
+</ol>
+
+<h2 id="some-articles">Some Articles</h2>
+<p><a href="https://docs.nvidia.com/deeplearning/frameworks/tf-trt-user-guide/#profiling-tools">TensorRT Profilers Introduction</a>
+Introduces NVIDIA profiler tools to profile TensorRT programs.</p>
+
+<p><a href="https://medium.com/tensorflow/high-performance-inference-with-tensorrt-integration-c4d78795fbfe">High Performance inference with TensorRT Integration</a></p>
+<ol>
+  <li>tensorrt conversion</li>
+  <li>quantization and calibiration</li>
+  <li>use nvprof to measure performance</li>
+</ol>
+
+<h2 id="personal-throught">Personal Throught</h2>
+<ol>
+  <li>Nsight System ~ nvprof &amp; nvvp(Virtual Profiler)</li>
+  <li>DLProf = Nsight + NVTX + Tensorboard Plugin</li>
+  <li>DLProf Disadvantage:
+    <ol>
+      <li>Missing Application Layer profile data</li>
+      <li>Missing Framework Layer Profile data</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="profiler-components">Profiler Components</h2>
+
+<pre><code class="language-puml">@startuml
+[Profiler] as profiler
+[Python Model] as model
+[Tensorflow Profiler] as tf_profiler
+[CNPAPI] as cnpapi
+
+model --&gt; profiler
+profiler --&gt; tf_profiler
+profiler --&gt; cnpapi
+
+@enduml
+</code></pre>
+
+<h2 id="profiler-sequences">Profiler Sequences</h2>
+
+<pre><code class="language-puml">@startuml
+
+Model --&gt; Profiler: Preprocess
+Model --&gt; "Tensorflow/OpenCV/etc.": Preprocess
+Model --&gt; Profiler: Preprocess End
+Profiler --&gt; Profiler: Record
+Model --&gt; Profiler: Session Run
+Profiler --&gt; "Tensorflow Profiler": Collect RunMetaData
+"Tensorflow Profiler" --&gt; Profiler: Op Stats
+Profiler --&gt; "CNPAPI": Collect Runtime Stats
+"CNPAPI" --&gt; Profiler: Runtime Stats
+Profiler --&gt; "CNPAPI": Collect Hardward Stats
+"CNPAPI" --&gt; Profiler: Hardward Stats
+Model --&gt; Profiler: Step End
+Model --&gt; Profiler: Postprocess
+Model --&gt; "Tensorflow/OpenCV/etc.": Postprocess
+Profiler --&gt; Profiler: Record
+Model --&gt; Profiler: Postprocess End
+Model --&gt; Profiler: Finalize
+Profiler --&gt; Profiler: Generate Stats
+Profiler --&gt; Profiler: Generate Timelines
+Profiler --&gt; Profiler: Generate Summary
+
+@enduml
+</code></pre>
