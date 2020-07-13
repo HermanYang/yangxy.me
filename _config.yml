@@ -33,7 +33,7 @@ github_username:  HermanYang
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-plantuml
+  - jekyll-plantastisch
 
 # Exclude from processing.
 # The following items will not be processed, by default.
