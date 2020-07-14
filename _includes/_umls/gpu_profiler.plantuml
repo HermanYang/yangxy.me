@@ -1,3 +1,4 @@
+@startuml
 class DeviceInfo {
   int ordinal
   string name
@@ -67,3 +68,4 @@ CudaEventCollector o-- CudaEventRecorder
 CudaEventCollector o-- StepStatsCollector
 DeviceTracer o-- CuptiCallbackHook
 DeviceTracer o-- CudaEventCollector
+@enduml
