@@ -1,0 +1,50 @@
+@startuml
+interface ProfileInterface
+interface ProfilerInterfaceKeras
+interface ProfilerInterfaceSlim
+interface ProfilerInterfaceEstimator
+
+ProfileInterface <|-- ProfilerInterfaceEstimator
+ProfileInterface <|-- ProfilerInterfaceKeras
+ProfileInterface <|-- ProfilerInterfaceSlim
+
+class CnProfiler
+
+ProfilerInterfaceEstimator <|-- CnProfiler
+ProfilerInterfaceKeras <|-- CnProfiler
+ProfilerInterfaceSlim <|-- CnProfiler
+
+class CnSampler
+class CnDev
+class LinuxNetworkSampler
+class LinuxCPUSampler
+class LinuxMemorySampler
+CnSampler *-- CnDev
+CnSampler *-- LinuxCPUSampler
+CnSampler *-- LinuxNetworkSampler
+CnSampler *-- LinuxMemorySampler
+
+class CnEnvCollector
+class OSInfoCollector
+class DeviceInfoCollector
+class RuntimeInfoCollector
+CnEnvCollector *-- OSInfoCollector
+CnEnvCollector *-- DeviceInfoCollector
+CnEnvCollector *-- RuntimeInfoCollector
+
+class CnStatsGenerator
+class Timeline 
+class TimelineStatsGenerator
+Timeline <|-- TimelineStatsGenerator
+class JsonStatsGenerator
+class MarkDownStatsGenerator
+class TensorboardStatsGenerator
+CnStatsGenerator *-- TimelineStatsGenerator
+CnStatsGenerator *-- JsonStatsGenerator
+CnStatsGenerator *-- MarkDownStatsGenerator
+CnStatsGenerator *-- TensorboardStatsGenerator
+
+CnProfiler *-- CnSampler
+CnProfiler *-- CnEnvCollector
+CnProfiler *-- CnStatsGenerator
+@enduml
