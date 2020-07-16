@@ -1,0 +1,23 @@
+@startuml
+DirectSession -> ProfilerSession: Create
+ProfilerSession -> HostTracer: Create
+ProfilerSession -> GpuTracer: Create
+DirectSession -> StepStatsCollector: Create
+ProfilerSession -> HostTracer: Start
+ProfilerSession -> GpuTracer: Start
+loop 
+DirectSession -> ExecutorState: Process
+ExecutorState -> NodeExecStats: SetExecutorStarted
+ExecutorState -> NodeExecStats: SetScheduled
+ExecutorState -> NodeExecStats: SetComputeStarted
+ExecutorState -> Device: Compute
+ExecutorState -> NodeExecStats: SetComputeEnded
+ExecutorState -> NodeExecStats: SetMemory
+ExecutorState -> NodeExecStats: SetexecutorEnded
+end
+DirectSession -> StepStatsCollector: Finalize
+StepStatsCollector -> NodeExecStats: Finalize
+DirectSession -> ProfilerSession: Destruction
+ProfilerSession -> Profiler: Stop
+DirectSession -> ProfilerSession: CollectData
+@enduml

@@ -1,50 +1,55 @@
 @startuml
-interface ProfileInterface
-interface ProfilerInterfaceKeras
-interface ProfilerInterfaceSlim
-interface ProfilerInterfaceEstimator
 
-ProfileInterface <|-- ProfilerInterfaceEstimator
-ProfileInterface <|-- ProfilerInterfaceKeras
-ProfileInterface <|-- ProfilerInterfaceSlim
+interface CntfProfilerInterface
+interface CntfProfilerInterfaceSlim
+interface CntfProfilerInterfaceEstimator
+interface CntfProfilerInterfaceKeras
 
-class CnProfiler
+CntfProfilerInterface <|-- CntfProfilerInterfaceSlim
+CntfProfilerInterface <|-- CntfProfilerInterfaceEstimator
+CntfProfilerInterface <|-- CntfProfilerInterfaceKeras
 
-ProfilerInterfaceEstimator <|-- CnProfiler
-ProfilerInterfaceKeras <|-- CnProfiler
-ProfilerInterfaceSlim <|-- CnProfiler
+class CntfProfiler
+CntfProfilerInterfaceSlim <|-- CntfProfiler
+CntfProfilerInterfaceEstimator <|-- CntfProfiler
+CntfProfilerInterfaceKeras <|-- CntfProfiler
 
-class CnSampler
-class CnDev
-class LinuxNetworkSampler
-class LinuxCPUSampler
-class LinuxMemorySampler
-CnSampler *-- CnDev
-CnSampler *-- LinuxCPUSampler
-CnSampler *-- LinuxNetworkSampler
-CnSampler *-- LinuxMemorySampler
 
-class CnEnvCollector
-class OSInfoCollector
-class DeviceInfoCollector
-class RuntimeInfoCollector
-CnEnvCollector *-- OSInfoCollector
-CnEnvCollector *-- DeviceInfoCollector
-CnEnvCollector *-- RuntimeInfoCollector
+package Sampler {
+    class CnSampler
+    class CnMLUSampler
+    class CnLinuxNetworkSampler
+    class CnLinuxCPUSampler
+    class CnLinuxMemorySampler
+    CnSampler *-- CnMLUSampler
+    CnSampler *-- CnLinuxCPUSampler
+    CnSampler *-- CnLinuxNetworkSampler
+    CnSampler *-- CnLinuxMemorySampler
+}
 
-class CnStatsGenerator
-class Timeline 
-class TimelineStatsGenerator
-Timeline <|-- TimelineStatsGenerator
-class JsonStatsGenerator
-class MarkDownStatsGenerator
-class TensorboardStatsGenerator
-CnStatsGenerator *-- TimelineStatsGenerator
-CnStatsGenerator *-- JsonStatsGenerator
-CnStatsGenerator *-- MarkDownStatsGenerator
-CnStatsGenerator *-- TensorboardStatsGenerator
+package "Environment Collector"{
+    class CnEnvCollector
+    class OSEnvCollector
+    class DeviceEnvCollector
+    class RuntimeEnvCollector
+    CnEnvCollector *-- OSEnvCollector
+    CnEnvCollector *-- DeviceEnvCollector
+    CnEnvCollector *-- RuntimeEnvCollector
+}
 
-CnProfiler *-- CnSampler
-CnProfiler *-- CnEnvCollector
-CnProfiler *-- CnStatsGenerator
+package "Stats Generator"{
+    class CntfStatsGenerator
+    class Timeline 
+    class TimelineGenerator
+    Timeline <|-- TimelineGenerator
+    class JsonGenerator
+    class TensorboardGenerator
+    CntfStatsGenerator *-- TimelineGenerator
+    CntfStatsGenerator *-- JsonGenerator
+    CntfStatsGenerator *-- TensorboardGenerator
+}
+
+CntfProfiler *-- CnSampler
+CntfProfiler *-- CnEnvCollector
+CntfProfiler *-- CntfStatsGenerator
 @enduml

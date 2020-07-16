@@ -1,0 +1,81 @@
+@startuml
+
+class GpuTracer {
+  + Start
+  + Stop
+  + CollectData
+}
+
+package TraceEvent {
+  class KernelDetails
+  class MemAllocDetails
+  class MemcpyDetails
+  class CuptiTracerEvent {
+  }
+}
+
+package Annotation {
+  class AnnotationMap
+  class PerDeviceAnnotationMap
+}
+
+class CuptiTracer
+class CuptiInterface
+
+package CallbackHooks {
+  class CuptiDriverApiHook
+  class CuptiDriverApiHookWithActivityApi
+  class CuptiDriverApiHookWithCudaEvent
+  class CudaEventRecorder {
+    + StartKernel
+    + StopKernel
+    + StartMemcpy
+    + StopMemcpy
+    + SaveRecord
+    + Flush
+  }
+}
+
+class ActivityHooks
+
+package Collector {
+  class CuptiTraceCollector {
+    + AddEvent
+    + Flush
+  }
+  class CuptiTraceCollectorImpl {
+    + Export
+  }
+  class PerDeviceCollector {
+    + AddEvent
+    + Flush
+  }
+}
+
+
+'Relations'
+GpuTracer o-- CuptiTracer
+
+CuptiTracer o-- CuptiTraceCollector
+CuptiTracer o-- CuptiInterface
+CuptiTracer o-- CuptiDriverApiHook
+CuptiTracer --> ActivityHooks
+
+CuptiDriverApiHook <|-- CuptiDriverApiHookWithActivityApi
+CuptiDriverApiHook <|-- CuptiDriverApiHookWithCudaEvent
+CuptiDriverApiHookWithCudaEvent o-- CudaEventRecorder
+CuptiDriverApiHookWithActivityApi o-- CuptiTraceCollector
+CudaEventRecorder o-- CuptiTraceCollector
+CudaEventRecorder --> CuptiTracerEvent
+
+CuptiTraceCollector <|-- CuptiTraceCollectorImpl
+CuptiTraceCollectorImpl o-- PerDeviceCollector
+PerDeviceCollector --> CuptiTracerEvent
+CuptiTraceCollector o-- AnnotationMap
+AnnotationMap *-- PerDeviceAnnotationMap
+
+CuptiTracerEvent --> MemAllocDetails
+CuptiTracerEvent --> MemcpyDetails
+CuptiTracerEvent --> KernelDetails
+
+@enduml

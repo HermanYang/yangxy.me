@@ -1,6 +1,7 @@
 @startuml
+==Create==
 ProfilerSession -> GpuTracer: Create
-'Start'
+==Start==
 ProfilerSession -> GpuTracer: Start
 GpuTracer -> CuptiTracer: Create
 GpuTracer -> CuptiTracerCollectorImpl: Create
@@ -22,14 +23,16 @@ else no selected callbacks
     CuptiTracer -> CuptiInterface: Enable all callbacks
 end
 alt enable activity api
-    CuptiTracer -> CuptiInterface: Register Activity Buffer allocation/deallocation callback 
+    CuptiTracer -> CuptiInterface: Register AllocaCuptiActivityBuffer
+    CuptiTracer -> CuptiInterface: Register FreeCuptiActivityBuffer
+    CuptiTracer -> CuptiInterface: Enbale Activity
 end
 alt enable event-based_activity
     CuptiTracer -> CuptiDriverApiHookWithCudaEvent: Create
 else disable event-based_activity
     CuptiTracer -> CuptiDriverApiHookWithActivityApi: Create
 end
-'Run'
+==Collect==
 Cupti -> CuptiTracer: HandleCallback
 alt enable event-based_activity
     alt Api Enter
@@ -38,11 +41,20 @@ alt enable event-based_activity
     else Api Exit
         CuptiTracer -> CuptiDriverApiHookWithCudaEvent: OnDriverApiExit
         CuptiDriverApiHookWithCudaEvent -> CudaEventRecorder: StopKernel/StopMemcpy
-        CuptiTracer -> CuptiTracerCollectorImpl: Add annotation 
+        CuptiTracer -> CuptiTracerCollectorImpl: Add annotation
         CuptiTracer -> CuptiTracerCollectorImpl: Add event 
         CuptiTracerCollectorImpl -> PerDeviceCollector: Add event 
     end
 else disable event-based_activity
+    alt AllocateActivityBuffer
+        Cupti -> Host: AllocCuptiActivityBuffer
+    else FreeActivityBuffer
+        Cupti -> Host: FreeCuptiActivityBuffer
+        Host -> CuptiTracer: ProcessActivityBuffer
+        CuptiTracer -> CuptiInterface: ActivityGetNextRecord
+        CuptiTracer -> CuptiTracerCollectorImpl: Add annotation
+        CuptiTracer -> CuptiTracerCollectorImpl: Add event
+    end
     alt Api Enter
         CuptiTracer -> CuptiDriverApiHookWithActivityApi
     else Api Exit
@@ -50,14 +62,7 @@ else disable event-based_activity
         CuptiTracerCollectorImpl -> PerDeviceCollector: Add event 
     end
 end
-'CollectData'
-ProfilerSession -> GpuTracer: CollectData
-GpuTracer -> CuptiTracerCollectorImpl: Export
-loop for each gpu device
-    CuptiTracerCollectorImpl -> PerDeviceCollector: Flush
-    PerDeviceCollector -> StepStats: Add device stats
-end 
-'Stop'
+==Stop==
 ProfilerSession -> GpuTracer: Stop
 GpuTracer -> CuptiTracer: Disable
 CuptiTracer -> CuptiInterface: Disable Api Tracing
@@ -68,4 +73,12 @@ alt enable event-based_activity
 else disable event-based_activity
     CuptiTracer -> CuptiDriverApiHookWithActivityApi: SyncAndFlush
 end
+==Tidy Stats Data==
+ProfilerSession -> GpuTracer: Start
+ProfilerSession -> GpuTracer: CollectData
+GpuTracer -> CuptiTracerCollectorImpl: Export
+loop for each gpu device
+    CuptiTracerCollectorImpl -> PerDeviceCollector: Flush
+    PerDeviceCollector -> StepStats: Add device stats
+end 
 @enduml

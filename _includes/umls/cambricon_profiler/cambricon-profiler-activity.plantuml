@@ -1,55 +1,61 @@
 @startuml
 start
-:Create Profiler;
-if (level = 0) 
-    :Disable Activity Profiler;
-    :Disable Harward Sampler;
-    :Disable TF Profilers;
-elseif (level = 1)
-    :Enable Activity Profiler;
-    :Disable Harward Sampler;
-    :Disable TF Profilers;
-elseif (level >= 2)
-    :Enable Activity Profiler;
-    :Enable Harward Sampler;
-    :Enable TF Profilers;
-endif
 
-if (Activity Profiler on) then (yes)
-:Trace Preprocess Activity;
-else (no)
+partition "Initialize Profiler" {
+    :Create Profiler;
+    if (level = 0) 
+        :Disable Activity Profiler;
+        :Disable Harward Sampler;
+        :Disable TF Profilers;
+    elseif (level = 1)
+        :Enable Activity Profiler;
+        :Disable Harward Sampler;
+        :Disable TF Profilers;
+    elseif (level >= 2)
+        :Enable Activity Profiler;
+        :Enable Harward Sampler;
+        :Enable TF Profilers;
 endif
+}
 
 fork
-if (api = raw) 
-repeat:Start Step;
-    :Start Trace;
-    :Session Run;
-    :End Trace;
-repeat while (has next step);
-elseif (api = keras)
-:Add Callback;
-:Compile;
-:Fit;
-endif
-:Profile PostProcess Activity;
+    partition "Train/Inference Loop" {
+        if (api == raw) 
+        repeat:Start Step;
+            if (Activity Profiler on) then (yes)
+                :Trace Preprocess Activity;
+            else (no)
+            endif
+            :Start Trace;
+            :Session Run;
+            :End Trace;
+            if (Activity Profiler on) then (yes)
+                :Trace Postprocess Activity;
+            else (no)
+            endif
+        repeat while (has next step);
+        elseif (api == keras)
+        :Add Callback;
+        :Compile;
+        :Fit;
+    endif
+}
 fork again
-if (sampler on) then (yes)
-    :Star Hardware Sampler;
-else (no)
-endif
-end fork
+    partition "Hardware Sampling" {
+    if (sampler on) then (yes)
+        :Star Hardware Sampler;
+    else (no)
+    endif
+    }
+    end fork
 
-if (sampler on)
-    :Stop Hardware Sampler;
-endif
+partition "Generate Profile Stats" {
+    if (sampler on)
+        :Stop Hardware Sampler;
+    endif
+    :Collect Environment Infomation;
+    :Gernerate Profile Data;
+}
 
-if (Activity Profiler on) then (yes)
-:Trace Postprocess Activity;
-else (no)
-endif
-
-:Collect Environment Infomation;
-:Gernerate Profiler Data;
 stop
 @enduml
