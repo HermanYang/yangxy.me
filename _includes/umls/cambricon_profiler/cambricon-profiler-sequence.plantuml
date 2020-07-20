@@ -1,0 +1,15 @@
+@startuml
+App -> CntfProfiler: Create()
+App -> CntfProfiler: get_tf_trace_level()
+App -> Tensorflow: RunOption(trace_level)
+CntfProfiler -> CntfProfiler: activity_start("Preprocess", step_id)
+App -> App: Preprocess
+CntfProfiler -> CntfProfiler: activity_end("Preprocess", step_id)
+CntfProfiler -> CntfProfiler: step_start("graph_name", step_id)
+App -> Tensorflow: Session.Run(..., options=options, run_metadata=profiler.get_tf_runmetadata("graph_name"))
+CntfProfiler -> CntfProfiler: step_end("graph_name", step_id)
+CntfProfiler -> CntfProfiler: activity_start("Postprocess", step_id)
+App -> App: Postprocess
+CntfProfiler -> CntfProfiler: activity_end("Postprocess", step_id)
+CntfProfiler -> CntfProfiler: Finalize
+@enduml

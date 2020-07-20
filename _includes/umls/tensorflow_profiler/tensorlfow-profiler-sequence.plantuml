@@ -5,19 +5,40 @@ ProfilerSession -> GpuTracer: Create
 DirectSession -> StepStatsCollector: Create
 ProfilerSession -> HostTracer: Start
 ProfilerSession -> GpuTracer: Start
-loop 
-DirectSession -> ExecutorState: Process
-ExecutorState -> NodeExecStats: SetExecutorStarted
+loop foreach node
+DirectSession --> ExecutorState: Process
 ExecutorState -> NodeExecStats: SetScheduled
+ExecutorState -> NodeExecStats: SetAllStart
+ExecutorState -> ExecutorState: PrepareInputs
 ExecutorState -> NodeExecStats: SetComputeStarted
+ExecutorState -> TraceMe: Start
 ExecutorState -> Device: Compute
+Device -> OpKernel: Compute
+OpKernel -> OpKernelContext: get_allocator
+OpKernelContext-> TrackingAllocator: Create and wrap original allocator
+OpKernel <- OpKernelContext: return TrackingAllocator
+OpKernel -> TrackingAllocator: Allocate
+TrackingAllocator -> Allocator: Allocate
+TrackingAllocator -> TrackingAllocator: AddAllocateRecord
+OpKernel -> TrackingAllocator: Deallocate
+TrackingAllocator -> Allocator: Deallocate
+TrackingAllocator -> TrackingAllocator: AddAllocateRecord
+ExecutorState -> TraceMe: Stop
 ExecutorState -> NodeExecStats: SetComputeEnded
+ExecutorState -> ExecutorState: ProcessOutput
+ExecutorState -> NodeExecStats: SetOutput
 ExecutorState -> NodeExecStats: SetMemory
-ExecutorState -> NodeExecStats: SetexecutorEnded
+NodeExecStats -> OpKernelContext: ConsumeWrappedAllocators
+NodeExecStats -> TrackingAllocator: Get total/peak/live bytes
+NodeExecStats -> OpKernelContext: Get temp memory allocated
+NodeExecStats -> OpKernelContext: Get persistent memory allocated
+ExecutorState -> NodeExecStats: SetAllEnd
 end
+DirectSession -> ProfilerSession: CollectData
+ProfilerSession -> HostTracer: Stop
+ProfilerSession -> GpuTracer: Stop
+ProfilerSession -> HostTracer: CollectData
+ProfilerSession -> GpuTracer: CollectData
 DirectSession -> StepStatsCollector: Finalize
 StepStatsCollector -> NodeExecStats: Finalize
-DirectSession -> ProfilerSession: Destruction
-ProfilerSession -> Profiler: Stop
-DirectSession -> ProfilerSession: CollectData
 @enduml

@@ -26,8 +26,9 @@ fork
                 :Trace Preprocess Activity;
             else (no)
             endif
+            :Create Option;
             :Start Trace;
-            :Session Run;
+            :Session Run with Option;
             :End Trace;
             if (Activity Profiler on) then (yes)
                 :Trace Postprocess Activity;
@@ -35,7 +36,8 @@ fork
             endif
         repeat while (has next step);
         elseif (api == keras)
-        :Add Callback;
+        :Create Option;
+        :Create Callback;
         :Compile;
         :Fit;
     endif

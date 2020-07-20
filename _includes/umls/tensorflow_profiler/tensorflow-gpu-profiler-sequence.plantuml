@@ -36,7 +36,7 @@ end
 Cupti -> CuptiTracer: HandleCallback
 alt enable event-based_activity
     alt Api Enter
-        CutiTracer -> CuptiDriverApiHookWithCudaEvent: OnDriverApiEnter
+        CuptiTracer -> CuptiDriverApiHookWithCudaEvent: OnDriverApiEnter
         CuptiDriverApiHookWithCudaEvent -> CudaEventRecorder: StartKernel/StartMemcpy
     else Api Exit
         CuptiTracer -> CuptiDriverApiHookWithCudaEvent: OnDriverApiExit
